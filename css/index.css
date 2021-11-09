@@ -1,0 +1,111 @@
+.btn-xl {
+    margin-top: 1.25rem;
+    background-color: #FFF5EE;
+    border-color: #FFF5EE;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    color: black;
+    padding: 0.6rem 3.5rem;
+    font-weight: bold;
+}
+
+.btn-xl:hover {
+    background-color: #FFF5EE;
+    border-color: #FFF5EE;
+    color: black;
+}
+
+#sidebar-wrapper {
+    background-color: #FFF5EE;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: black;
+    font-weight: bold;
+}
+
+.sidebar-nav li.sidebar-nav-item a {
+    color: black;
+}
+
+#portfolio {
+    background-color: #FFF5EE
+}
+
+.reservation-subtitle {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem !important;
+}
+
+.reservation-search-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.btn-region {
+    border-color: #696969;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn-search {
+    background-color: #D3D3D3;
+}
+
+.mb-3 .search-facility {
+    margin-bottom: 0rem;
+}
+
+.custom-table {
+    /* display: none; */
+    margin-top: 3rem;
+}
+
+.court-col-name {
+    color: black;
+    text-decoration:none !important
+}
+
+.court-col-name:hover {
+    text-decoration:none !important
+}
+
+.mb-5.court-name {
+    margin-top: 0.5rem;
+}
+
+.date-icon {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+.row.reservation-form-row {
+    margin-bottom: 3rem;
+}
+.btn-secondary {
+    margin-bottom: 0.5rem;
+}
+.form-label {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+.reservation-inquire {
+    margin-top: 3rem;
+}
+#row-cancel-modify {
+    margin-top: 3rem;
+}
+.btn-cancel-modify {
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+#btn-inquire {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: #D3D3D3;
+}
