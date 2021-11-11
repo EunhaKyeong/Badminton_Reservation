@@ -22,4 +22,11 @@
 		WHERE do=#{metropolitanCity} AND sigungu=#{sigungu} AND eupmyeonri=#{eupmyeonri}
 	</select>
 	
+	<!-- 클라이언트가 검색한 장소명이 포함되는 배드민턴장 데이터를 court 테이블에서 select 한다. -->
+	<select id="selectCourtListByName" parameterType="String" resultType="CourtDTO" resultMap="courtRM">
+		SELECT *
+		FROM court
+		WHERE name LIKE CONCAT ('%', #{name}, '%')
+	</select>
+	
 </mapper>
