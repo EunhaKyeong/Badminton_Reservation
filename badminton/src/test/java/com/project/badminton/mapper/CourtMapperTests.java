@@ -1,5 +1,7 @@
 package com.project.badminton.mapper;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -8,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.project.badminton.domain.CourtDTO;
 import com.project.badminton.domain.CourtReqDTO;
+import com.project.badminton.domain.ReservationDTO;
 
 @SpringBootTest
 public class CourtMapperTests {
