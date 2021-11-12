@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.badminton.mapper.CourtMapper">
+
+	<!-- court 테이블에서 do 컬럼을 DTO에서 사용할 수 없어 metropolitanCity로 변경했고, 
+		 이로 인해 resultMap 태그를 사용하여 컬럼을 연결했음. -->
+	<resultMap type="CourtDTO" id="courtRM">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="metropolitanCity" column="do"/>
+		<result property="sigungu" column="sigungu"/>
+		<result property="eupmyeonri" column="eupmyeonri"/>
+		<result property="openTime" column="openTime"/>
+		<result property="closeTime" column="closeTime"/>
+		<result property="link" column="link"/>
+	</resultMap>
+	
+	<!-- 클라이언트가 입력한 지역정보(광역시도, 시군구, 읍면동리)에 위치하는 배드민턴장 데이터를 court 테이블에서 select 한다. -->
+	<select id="selectCourtListByLocation" parameterType="CourtReqDTO" resultType="CourtDTO" resultMap="courtRM">
+		SELECT *
+		FROM court
+		WHERE do=#{metropolitanCity} AND sigungu=#{sigungu} AND eupmyeonri=#{eupmyeonri}
+	</select>
+	
+	<!-- 클라이언트가 검색한 장소명이 포함되는 배드민턴장 데이터를 court 테이블에서 select 한다. -->
+	<select id="selectCourtListByName" parameterType="String" resultType="CourtDTO" resultMap="courtRM">
+		SELECT *
+		FROM court
+		WHERE name LIKE CONCAT ('%', #{name}, '%')
+	</select>
+	
+</mapper>
