@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.badminton.mapper.ReservationMapper">
+
+	<resultMap type="ReservationCourtDTO" id="reservationCourtRM">
+		<result property="reservationId" column="id"/>
+		<result property="booker" column="userName"/>
+		<result property="courtId" column="courtId"/>
+		<result property="court" column="name"/>
+		<result property="date" column="reservationDate"/>
+		<result property="startTime" column="startTime"/>
+		<result property="endTime" column="endTime"/>
+	</resultMap>
+	
+	<!-- reservation 테이블 insert 쿼리문 -->
+	<insert id="insertReservation" parameterType="ReservationDTO">
+		INSERT INTO reservation(reservationDate, startTime, endTime, userName, userPhone, courtId)
+			VALUES (#{reservationDate}, #{startTime}, #{endTime}, #{userName}, #{userPhone}, #{courtId})
+	</insert>
+	
+	<!-- reservation 테이블에서 reservationDate와 courtId를 검색해 조회하는 쿼리문 -->
+	<select id="selectStartEndTimeByCourtIdAndDate"  parameterType="ReservationDTO" resultType="StartEndTimeDTO">
+		SELECT startTime, endTime
+		FROM reservation
+		WHERE reservationDate=#{reservationDate} AND courtId=#{courtId}
+	</select>
+	
+	<!-- reservation 테이블과 court 테이블이 courtId를 기준으로 조인을 한다.
+		 조인된 테이블에서 userName과 userPhone으로 검색된 데이터들을
+		 1. reservationDate, 2. startTime 순으로 정렬한다. -->
+	<select id="selectReservationListByBooker" parameterType="BookerDTO" resultType="ReservationCourtDTO" resultMap="reservationCourtRM">
+		SELECT reservation.id, reservation.userName, court.id AS courtId, court.name, reservation.reservationDate, reservation.startTime, reservation.endTime
+		FROM reservation
+			INNER JOIN court ON reservation.courtId=court.id
+		WHERE reservation.userName=#{name} AND reservation.userPhone=#{phone} AND reservation.isDelete=0
+		ORDER By reservation.reservationDate, reservation.startTime;
+	</select>
+	
+	<!-- 전달받은 reservationId를 삭제한다.
+		 isDelete 컬럼값을 1로 변경하면 취소된 예약이 된다.  -->
+	<delete id="deleteReservation" parameterType="Long">
+		UPDATE reservation
+		SET isDelete=1
+		WHERE id=#{id}
+	</delete>
+	
+	<update id="updateReservation" parameterType="ReservationDTO">
+		UPDATE reservation
+		SET courtId=#{courtId},
+			userName=#{userName},
+			userPhone=#{userPhone},
+			reservationDate=#{reservationDate}, 
+			startTime=#{startTime}, 
+			endTime=#{endTime}
+		WHERE id=#{id}
+	</update>
+</mapper>
