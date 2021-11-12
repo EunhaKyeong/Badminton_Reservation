@@ -1,5 +1,6 @@
 .gradle
 /build/
+/badminton/src/main/resources/static/assets
 /badminton/src/main/resources/application.properties
 /.metadata
 
