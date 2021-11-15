@@ -85,4 +85,11 @@ public class ReservationServiceImpl implements ReservationService {
 		return new ReservedTimeDTO(startTimes, endTimes);
 	}
 
+	//예약 수정하기
+	@Override
+	public Boolean updateReservation(ReservationDTO reservation) {
+		//수정이 정상적으로 완료되면 true, 완료되지 않으면 false
+		return reservationMapper.updateReservation(reservation)>0? true: false;
+	}
+
 }

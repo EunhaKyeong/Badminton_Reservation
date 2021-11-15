@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -79,6 +80,23 @@ public class ReservationController {
 		
 		//삭제된 데이터(isDelete=1)가 없으면 responseBody에 false를 반환하고, 있으면 true를 반환한다.
 		return ResponseEntity.ok().body(isDelete);
+	}
+	
+	//예약 수정하기
+	@PatchMapping("/{id}")
+	private ResponseEntity<String> updateReservation(@PathVariable(value="id", required=true) Long id, @RequestBody ReservationDTO reservation) {
+		try {
+			Boolean result = reservationService.updateReservation(reservation);
+			
+			if (result)
+				return ResponseEntity.created(null).body("success");
+			else
+				return ResponseEntity.internalServerError().body("fail");
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+			return ResponseEntity.internalServerError().body("fail");
+		}
 	}
 	
 }

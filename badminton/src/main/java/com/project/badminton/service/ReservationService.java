@@ -11,4 +11,5 @@ public interface ReservationService {
 	ReservedTimeDTO getReservedTime(String date, Long courtId);	//예약된 시간을 조회하기
 	List<ReservationCourtDTO> getReservationByBooker(String name, String phone);	//예약자 정보를 통해 예약 내역 조회하기
 	Boolean cancelReservation(Long reservationId);	//예약 취소하기
+	Boolean updateReservation(ReservationDTO reservation);	//예약 수정하기
 }
