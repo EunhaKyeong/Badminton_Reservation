@@ -1,10 +1,12 @@
 package com.project.badminton.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import com.project.badminton.domain.CourtDTO;
 import com.project.badminton.domain.CourtReqDTO;
 import com.project.badminton.service.CourtService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/courts")
 public class CourtController {
@@ -23,7 +26,7 @@ public class CourtController {
 	
 	//배드민턴장 목록 조회하기
 	@GetMapping() 
-	ResponseEntity<List<CourtDTO>> getCourtListByLocation(@RequestParam(value="metropolitanCity", required=false) String metropolitanCity, @RequestParam(value="sigungu", required=false) String sigungu, @RequestParam(value="eupmyeonri", required=false) String eupmyeonri, @RequestParam(value="name", required=false) String name) {
+	ResponseEntity<List<CourtDTO>> getCourtListByLocation(@RequestParam(value="metropolitanCity", required=false) String metropolitanCity, @RequestParam(value="sigungu", required=false) String sigungu, @RequestParam(value="eupmyeonri", required=false) String eupmyeonri, @RequestParam(value="name", required=false) String name) throws UnsupportedEncodingException {
 		List<CourtDTO> courts = new ArrayList<CourtDTO>();
 		
 		if (metropolitanCity!=null) {	//장소(광역시도/시군구/읍면동리)를 검색해 배드민턴장 목록 검색하기

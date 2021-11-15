@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,6 +23,7 @@ import com.project.badminton.domain.ReservationDTO;
 import com.project.badminton.domain.ReservedTimeDTO;
 import com.project.badminton.service.ReservationService;
 
+//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
