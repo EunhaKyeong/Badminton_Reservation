@@ -68,11 +68,12 @@ public class ReservationServiceImpl implements ReservationService {
 		List<LocalTime> endTimes = new ArrayList<LocalTime>();
 		
 		for (StartEndTimeDTO time: times) {
-			startTimes.add(LocalTime.of(time.getStartTime().getHour(), 0, 0));
-			endTimes.add(LocalTime.of(time.getEndTime().getHour(), 0, 0));
+			startTimes.add(LocalTime.of(time.getStartTime().getHour(), 0));
+			endTimes.add(LocalTime.of(time.getEndTime().getHour(), 0));
 			
 			for (int hour=time.getStartTime().getHour()+1; hour<time.getEndTime().getHour(); hour++) {
-				startTimes.add(LocalTime.of(hour, 0, 0));
+				startTimes.add(LocalTime.of(hour, 0));
+				endTimes.add(LocalTime.of(hour, 0));
 			}
 		}
 		
