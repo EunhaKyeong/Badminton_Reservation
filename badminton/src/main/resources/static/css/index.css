@@ -87,6 +87,8 @@
 }
 .btn-secondary {
     margin-bottom: 0.5rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
 }
 .form-label {
     margin-bottom: 1rem;
@@ -108,4 +110,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     background-color: #D3D3D3;
+}
+.dropdown-item:hover {
+    cursor: pointer;
 }

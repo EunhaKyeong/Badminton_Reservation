@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ko.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
@@ -60,51 +61,39 @@
                             <div class="col">
                                 <p class="reservation-search-title">내 주변 배드민턴장 찾기</p>
                                 <!-- <div class="btn-group"> -->
-                                    <button type="button" class="btn btn-region dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">광역시도</button>
-                                    <ul class="dropdown-menu" id="">
-                                        <li><a class="dropdown-item" href="#sigungu">인천광역시</a></li>
+                                    <button type="button" class="btn btn-region dropdown-toggle" id="sigungu_btn" data-bs-toggle="dropdown" aria-expanded="false">광역시도</button>
+                                    <ul class="dropdown-menu sigungu" id="sigungu_ul">
+                                        <li><a class="dropdown-item">인천광역시</a></li>
                                     </ul>
-                                    <button type="button" class="btn btn-region dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">시군구</button>
-                                    <ul class="dropdown-menu" id="gungu">
-                                        <li><a class="dropdown-item" href="#">강화군</a></li>
-                                        <li><a class="dropdown-item" href="#">계양군</a></li>
-                                        <li><a class="dropdown-item" href="#">남동구</a></li>
-                                        <li><a class="dropdown-item" href="#">동구</a></li>
-                                        <li><a class="dropdown-item" href="#">미추홀구</a></li>
-                                        <li><a class="dropdown-item" href="#">부평구</a></li>
-                                        <li><a class="dropdown-item" href="#">서구</a></li>
-                                        <li><a class="dropdown-item" href="#">연수구</a></li>
-                                        <li><a class="dropdown-item" href="#">중구</a></li>
+                                    <button type="button" class="btn btn-region dropdown-toggle" id="gungu_btn" data-bs-toggle="dropdown" aria-expanded="false">시군구</button>
+                                    <ul class="dropdown-menu gungu">
+                                        <li><a class="dropdown-item">강화군</a></li>
+                                        <li><a class="dropdown-item">계양구</a></li>
+                                        <li><a class="dropdown-item">남동구</a></li>
+                                        <li><a class="dropdown-item">동구</a></li>
+                                        <li><a class="dropdown-item">미추홀구</a></li>
+                                        <li><a class="dropdown-item">부평구</a></li>
+                                        <li><a class="dropdown-item">서구</a></li>
+                                        <li><a class="dropdown-item">연수구</a></li>
+                                        <li><a class="dropdown-item">중구</a></li>
                                     </ul>
-                                    <button type="button" class="btn btn-region dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">읍면동</button>
-                                    <ul class="dropdown-menu"></ul>
+                                    <button type="button" class="btn btn-region dropdown-toggle" id="eupmyeonri_btn" data-bs-toggle="dropdown" aria-expanded="false">읍면동리</button>
+                                    <ul class="dropdown-menu eupmyeonri">
+
+                                    </ul>
                                     <button type="button" class="btn btn-region btn-search" aria-expanded="false">검색</button>
                                 <!-- </div> -->
                             </div>
                             <div class="col">
                                 <p class="reservation-search-title">시설명 검색해서 찾기</p>
                                 <div class="input-group mb-3 search-facility">
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="시설명을 입력해주세요.">
-                                    <button type="button" class="btn btn-region btn-search" aria-expanded="false">검색</button>
+                                    <input type="text" class="form-control" name="court-name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="시설명을 입력해주세요.">
+                                    <button type="button" class="btn btn-court-name btn-search" aria-expanded="false">검색</button>
                                 </div>
                             </div>
                         </div>
 
-                        <table class="table table-hover custom-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">장소명</th>
-                                    <th scope="col">링크</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="col">1</th>
-                                    <th scope="col"><a class="court-col-name" href="#services">인천시림도원체육관</a></th>
-                                    <th scope="col"><a href="http://naver.me/Gvkc9FEP" target="_blank">http://naver.me/Gvkc9FEP</a></th>
-                                </tr>
-                            </tbody>
+                        <table class="table table-hover custom-table" id="court_table">
                         </table>
 
                         <!-- <a class="btn btn-dark btn-xl" href="#services">What We Offer</a> -->
@@ -123,16 +112,16 @@
                     <div class="row reservation-form-row">
                         <div class="col-sm-4">
                             <label for="input-name" class="form-label">이름</label>
-                            <input type="text" class="form-control" id="input-name" placeholder="이름을 입력해 주세요.">
+                            <input type="text" class="form-control" name="bookerName" placeholder="이름을 입력해 주세요.">
                         </div>
                         <div class="col-sm-4">
                             <label for="input-phone" class="form-label">전화번호</label>
-                            <input type="text" class="form-control" id="input-phone" placeholder="전화번호를 입력해 주세요.(- 제외)">
+                            <input type="text" class="form-control" name="bookerPhone" placeholder="전화번호를 입력해 주세요.(- 제외)">
                         </div>
                         <div class="col-sm-4">
                             <label for="input-phone" class="form-label">예약일</label>
                             <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                                <input type="text" class="form-control datetimepicker-input" name="reservationDate" data-target="#datetimepicker4"/>
                                 <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                     <div class="input-group-text date-icon"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -148,156 +137,14 @@
                         </div>
                     </div>
                     <div class="row reservation-form-row justify-content-evenly">
-                        <div class="col-4">
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">00:00</label>
-                            
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">01:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">02:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">03:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">04:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">05:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">06:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">07:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">08:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">09:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">10:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">11:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">12:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">13:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">14:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">15:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">16:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">17:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">18:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">19:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">20:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">21:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">22:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">23:00</label>
+                        <div class="col-4" id="reservation_start_time">
                         </div>
-                        <div class="col-4">
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">01:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">02:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">03:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">04:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">05:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">06:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">07:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">08:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">09:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">10:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">11:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">12:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">13:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">14:00</label>
-                            
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">15:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">16:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">17:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">18:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">19:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">20:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
-                            <label class="btn btn-secondary" for="option3">21:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                            <label class="btn btn-secondary" for="option4">22:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-                            <label class="btn btn-secondary" for="option1">23:00</label>
-    
-                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                            <label class="btn btn-secondary" for="option2">24:00</label>
+                        <div class="col-4" id="reservation_end_time">
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-6">
-                            <input type="submit" class="btn btn-primary btn-xl" value="예약하기">
+                            <input type="submit" class="btn btn-primary btn-xl" id="reservation_btn" value="예약하기">
                         </div>
                     </div>
                 </div>
@@ -473,12 +320,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker({
-                    format: 'L'
-                });
-            });
-        </script>
+        <script src="js/index.js"></script>
     </body>
 </html>
