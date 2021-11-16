@@ -98,13 +98,12 @@
     margin-top: 3rem;
 }
 #row-cancel-modify {
+    visibility: hidden;
     margin-top: 3rem;
 }
 .btn-cancel-modify {
-    padding: 0.5rem 2rem;
+    padding: 0.1rem 0.6rem;
     border-radius: 5rem;
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
 }
 #btn-inquire {
     padding-left: 1.5rem;
@@ -113,4 +112,19 @@
 }
 .dropdown-item:hover {
     cursor: pointer;
+}
+#reservation-table {
+    visibility: hidden;
+}
+.reservation-court-id {
+    display: none;
+}
+.reservation-id {
+    display: none;
+}
+#court-id {
+    display: none;
+}
+#reservation-id {
+    display: none;
 }

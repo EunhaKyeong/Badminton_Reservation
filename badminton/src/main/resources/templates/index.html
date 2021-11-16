@@ -41,7 +41,6 @@
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
                 <h1 class="mb-1">배드민턴장 예약 서비스</h1>
-                <!-- <h3 class="mb-5"><em>언제 어디서든 배드민턴장을 쉽게 예약하세요<!DOCTYPE html></em></h3> -->
                 <a class="btn btn-primary btn-xl" href="#about">예약하기</a>
             </div>
         </header>
@@ -53,8 +52,6 @@
                         <h2>배드민턴장 예약하기</h2>
                         <p class="lead mb-5 reservation-subtitle">
                             내 주변에 배드민턴장이 어디 있을까요? 찾아보세요!
-                            <!-- <a href="https://unsplash.com/">Unsplash</a>
-                            ! -->
                         </p>
 
                         <div class="row">
@@ -95,8 +92,6 @@
 
                         <table class="table table-hover custom-table" id="court_table">
                         </table>
-
-                        <!-- <a class="btn btn-dark btn-xl" href="#services">What We Offer</a> -->
                     </div>
                 </div>
             </div>
@@ -106,16 +101,17 @@
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">예약하기</h3>
-                    <h2 class="mb-5 court-name">인천시림도원체육관</h2>
+                    <h2 class="mb-5 court-name">배드민턴 장소를 선택해주세요</h2>
                 </div>
                 <div class="form-group">
                     <div class="row reservation-form-row">
+                        <p id="reservation-id"></p>
                         <div class="col-sm-4">
-                            <label for="input-name" class="form-label">이름</label>
+                            <label class="form-label">이름</label>
                             <input type="text" class="form-control" name="bookerName" placeholder="이름을 입력해 주세요.">
                         </div>
                         <div class="col-sm-4">
-                            <label for="input-phone" class="form-label">전화번호</label>
+                            <label class="form-label">전화번호</label>
                             <input type="text" class="form-control" name="bookerPhone" placeholder="전화번호를 입력해 주세요.(- 제외)">
                         </div>
                         <div class="col-sm-4">
@@ -148,46 +144,9 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                        <h4><strong>Responsive</strong></h4>
-                        <p class="text-faded mb-0">Looks great on any screen size!</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-                        <h4><strong>Redesigned</strong></h4>
-                        <p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-                        <h4><strong>Favorited</strong></h4>
-                        <p class="text-faded mb-0">
-                            Millions of users
-                            <i class="fas fa-heart"></i>
-                            Start Bootstrap!
-                        </p>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-                        <h4><strong>Question</strong></h4>
-                        <p class="text-faded mb-0">I mustache you a question...</p>
-                    </div>
-                </div> -->
             </div>
         </section>
         <!-- Callout-->
-        <!-- <section class="callout">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mx-auto mb-5">
-                    Welcome to
-                    <em>your</em>
-                    next website!
-                </h2>
-                <a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download Now!</a>
-            </div>
-        </section> -->
         <!-- Portfolio-->
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
@@ -201,112 +160,36 @@
                             <input type="text" class="form-control" id="input-name" placeholder="이름을 입력해 주세요.">
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" id="input-name" placeholder="전화번호를 입력해 주세요.">
+                            <input type="text" class="form-control" id="input-phone" placeholder="전화번호를 입력해 주세요.">
                         </div>
                         <div class="col-lg-2 text-center">
                             <input type="submit" class="btn" id="btn-inquire" value="조회하기">
                         </div>
                     </div>
-                    
-                    <!-- <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="..." />
-                        </a>
-                    </div> -->
                 </div>
                 <div class="row justify-content-center">
-                    <table class="table table-hover text-center custom-table">
+                    <table class="table table-hover text-center custom-table" id="reservation-table">
                         <thead>
                             <tr>
-                                <th scope="col">선택</th>
+                                <!-- <th scope="col">선택</th> -->
                                 <th scope="col">예약자</th>
                                 <th scope="col">장소명</th>
                                 <th scope="col">날짜</th>
                                 <th scope="col">시간</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="col"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></th>
-                                <th scope="col">경은하</th>
-                                <th scope="col"><a class="court-col-name" href="http://naver.me/Gvkc9FEP" target="_blank">인천시림도원체육관</a></th>
-                                <th scope="col">2021-11-09</th>
-                                <th scope="col">11:00~12:00</th>
-                            </tr>
+                        <tbody id="reservation-tbody">
                         </tbody>
                     </table>
                 </div>
-                <div class="row justify-content-center" id="row-cancel-modify">
-                    <div class="col text-center">
-                        <button type="button" class="btn btn-danger btn-cancel-modify">예약 취소</button>
-                        <button type="button" class="btn btn-primary btn-cancel-modify">예약 수정</button>
-                    </div>
-                </div>
             </div>
         </section>
-        <!-- Call to Action-->
-        <!-- <section class="content-section bg-primary text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-                <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
-                <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
-            </div>
-        </section> -->
-        <!-- Map-->
-        <!-- <div class="map" id="contact">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-            <br />
-            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
-        </div> -->
         <!-- Footer-->
         <footer class="footer text-center" id="contact">
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
-                    <!-- <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
-                    </li> -->
                     <li class="list-inline-item">
                         <a class="social-link rounded-circle text-white" href="https://github.com/EunhaKyeong/Badminton_Reservation" target="_blank"><i class="icon-social-github"></i></a>
                     </li>
