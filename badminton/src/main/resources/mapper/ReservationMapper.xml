@@ -7,6 +7,7 @@
 		<result property="booker" column="userName"/>
 		<result property="courtId" column="courtId"/>
 		<result property="court" column="name"/>
+		<result property="link" column="link" />
 		<result property="date" column="reservationDate"/>
 		<result property="startTime" column="startTime"/>
 		<result property="endTime" column="endTime"/>
@@ -22,14 +23,14 @@
 	<select id="selectStartEndTimeByCourtIdAndDate"  parameterType="ReservationDTO" resultType="StartEndTimeDTO">
 		SELECT startTime, endTime
 		FROM reservation
-		WHERE reservationDate=#{reservationDate} AND courtId=#{courtId}
+		WHERE reservationDate=#{reservationDate} AND courtId=#{courtId} AND isDelete=0
 	</select>
 	
 	<!-- reservation 테이블과 court 테이블이 courtId를 기준으로 조인을 한다.
 		 조인된 테이블에서 userName과 userPhone으로 검색된 데이터들을
 		 1. reservationDate, 2. startTime 순으로 정렬한다. -->
 	<select id="selectReservationListByBooker" parameterType="BookerDTO" resultType="ReservationCourtDTO" resultMap="reservationCourtRM">
-		SELECT reservation.id, reservation.userName, court.id AS courtId, court.name, reservation.reservationDate, reservation.startTime, reservation.endTime
+		SELECT reservation.id, reservation.userName, court.id AS courtId, court.name, court.link, reservation.reservationDate, reservation.startTime, reservation.endTime
 		FROM reservation
 			INNER JOIN court ON reservation.courtId=court.id
 		WHERE reservation.userName=#{name} AND reservation.userPhone=#{phone} AND reservation.isDelete=0
