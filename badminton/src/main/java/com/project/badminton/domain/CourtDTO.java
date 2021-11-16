@@ -2,7 +2,10 @@ package com.project.badminton.domain;
 
 import java.sql.Time;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 //court 테이블 DTO
+@JsonInclude(JsonInclude.Include.NON_NULL)	//JSON으로 클라이언트에게 데이터를 전달할 때 null인 필드는 제외하고 전달한다.
 public class CourtDTO {
 	private Long id;
 	private String name;
