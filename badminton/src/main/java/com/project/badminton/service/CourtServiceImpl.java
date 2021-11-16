@@ -27,4 +27,10 @@ public class CourtServiceImpl implements CourtService {
 		return courtMapper.selectCourtListByName(name);
 	}
 
+	//배드민턴장 id를 검색해 배드민턴장 상세정보 조회하기
+	@Override
+	public CourtDTO getCourtById(Long courtId) {
+		return courtMapper.selectCourtById(courtId);
+	}
+
 }
