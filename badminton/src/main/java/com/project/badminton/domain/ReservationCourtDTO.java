@@ -9,6 +9,7 @@ public class ReservationCourtDTO {
 	private String booker;
 	private Long courtId;
 	private String court;
+	private String link;
 	private LocalDate date;
 	private LocalTime startTime;
 	private LocalTime endTime;
@@ -37,6 +38,12 @@ public class ReservationCourtDTO {
 	public void setCourt(String court) {
 		this.court = court;
 	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
 	public LocalDate getDate() {
 		return date;
 	}
@@ -58,8 +65,8 @@ public class ReservationCourtDTO {
 	
 	@Override
 	public String toString() {
-		return "ReservationCourtDTO [reservationId=" + reservationId + ", booker=" + booker + ", courtId=" + courtId + ", court=" + court
-				+ ", date=" + date + ", startTime=" + startTime + ", endTime=" + endTime + "]";
+		return "ReservationCourtDTO [reservationId=" + reservationId + ", booker=" + booker + ", courtId=" + courtId
+				+ ", court=" + court + ", link=" + link + ", date=" + date + ", startTime=" + startTime + ", endTime="
+				+ endTime + "]";
 	}
-	
 }
