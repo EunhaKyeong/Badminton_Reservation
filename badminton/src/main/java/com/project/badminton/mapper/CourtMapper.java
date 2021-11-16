@@ -13,4 +13,6 @@ public interface CourtMapper {
 	List<CourtDTO> selectCourtListByLocation(CourtReqDTO courtReqDTO);
 	//클라이언트가 검색한 장소명이 포함되는 배드민턴장 데이터를 court 테이블에서 select 한다.
 	List<CourtDTO> selectCourtListByName(String name);
+	//courtId로 배드민턴장 상세정보를 select한다.
+	CourtDTO selectCourtById(Long courtId);
 }
