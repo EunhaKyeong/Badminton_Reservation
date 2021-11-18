@@ -63,6 +63,7 @@
 .custom-table {
     /* display: none; */
     margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .court-col-name {
@@ -126,5 +127,11 @@
     display: none;
 }
 #reservation-id {
+    display: none;
+}
+#court-page-container {
+    display: none;
+}
+#reservation-page-container {
     display: none;
 }
