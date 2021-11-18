@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.badminton.domain.BookerDTO;
 import com.project.badminton.domain.ReservationCourtDTO;
 import com.project.badminton.domain.ReservationDTO;
+import com.project.badminton.domain.ReservationResDTO;
 import com.project.badminton.domain.ReservedTimeDTO;
 import com.project.badminton.service.ReservationService;
 
-//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
@@ -65,13 +66,16 @@ public class ReservationController {
 	
 	//예약자 정보를 활용해 예약 내역을 조회하는 API
 	@GetMapping()
-	private ResponseEntity<List<ReservationCourtDTO>> getReservationsByBooker(@RequestParam(value="name", required=true) String name, @RequestParam(value="phone", required=true) String phone) {
-		List<ReservationCourtDTO> reservations = reservationService.getReservationByBooker(name, phone);
+	private ResponseEntity<ReservationResDTO> getReservationsByBooker(@RequestParam(value="name", required=true) String name, @RequestParam(value="phone", required=true) String phone, @RequestParam(value="pageNo", required=true) int pageNo) {
+		BookerDTO booker = new BookerDTO(name, phone, pageNo);
+		
+		int cnt = reservationService.getReservationCnt(booker);	//총 예약 목록 데이터 갯수를 조회한다.
+		List<ReservationCourtDTO> reservations = reservationService.getReservationByBooker(booker);
 		
 		if (reservations.size()==0) {
 			return ResponseEntity.noContent().build();
 		} else {
-			return ResponseEntity.ok(reservations);
+			return ResponseEntity.ok(new ReservationResDTO(cnt, pageNo, reservations));
 		}
 	}
 	

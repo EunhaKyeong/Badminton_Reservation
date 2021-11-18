@@ -16,4 +16,5 @@ public interface ReservationMapper {
 	public List<ReservationCourtDTO> selectReservationListByBooker(BookerDTO booker);	//예약자 이름과 전화번호를 검색해 예약 목록 조회하기
 	public int deleteReservation(Long reservationId);	//예약 내역 취소
 	public int updateReservation(ReservationDTO reservation);	//예약 내역 수정
+	public int selectReservationCntByBooker(BookerDTO booker);	//예약자 이름과 전화번호를 가지고 검색된 전체 예약 데이터 수 조회하기
 }

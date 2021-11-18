@@ -50,7 +50,7 @@ public class ReservationMapperTests {
 	@Test
 	void testOfSelectReservationListByBooker() {
 		try {
-			BookerDTO booker = new BookerDTO("경은하", "01012345678");
+			BookerDTO booker = new BookerDTO("경은하", "01012345678", 1);
 			List<ReservationCourtDTO> reservations = reservationMapper.selectReservationListByBooker(booker);
 			
 			for (ReservationCourtDTO r: reservations) {

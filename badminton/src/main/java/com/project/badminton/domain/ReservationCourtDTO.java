@@ -3,6 +3,8 @@ package com.project.badminton.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+//예약 목록 조회 시 사용되는 데이터 클래스
+//reservation 테이블과 court가 조인된 데이터 클래스이다.
 public class ReservationCourtDTO {
 
 	private Long reservationId;

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.badminton.domain.CourtDTO;
 import com.project.badminton.domain.CourtReqDTO;
+import com.project.badminton.domain.CourtResDTO;
 import com.project.badminton.service.CourtService;
 
-//@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/courts")
 public class CourtController {
@@ -27,25 +27,34 @@ public class CourtController {
 	
 	//배드민턴장 목록 조회하기
 	@GetMapping() 
-	ResponseEntity<List<CourtDTO>> getCourtListByLocation(@RequestParam(value="metropolitanCity", required=false) String metropolitanCity, 
+	ResponseEntity<CourtResDTO> getCourtListByLocation(@RequestParam(value="metropolitanCity", required=false) String metropolitanCity, 
 														@RequestParam(value="sigungu", required=false) String sigungu, 
 														@RequestParam(value="eupmyeonri", required=false) String eupmyeonri, 
-														@RequestParam(value="name", required=false) String name) throws UnsupportedEncodingException {
-		List<CourtDTO> courts = new ArrayList<CourtDTO>();
+														@RequestParam(value="name", required=false) String name, 
+														@RequestParam(value="pageNo", required=true) int pageNo) throws UnsupportedEncodingException {
+		
+		List<CourtDTO> courts = new ArrayList<CourtDTO>();	//DB에서 전달받은 배드민턴장 목록을 저장하는 변수
+		CourtReqDTO reqData;	//요청받은 데이터를 저장하는 클래스
+		int cnt = 0;	//courts의 데이터 개수를 저장하는 변수 
 		
 		if (metropolitanCity!=null) {	//장소(광역시도/시군구/읍면동리)를 검색해 배드민턴장 목록 검색하기
-			CourtReqDTO reqData = new CourtReqDTO(metropolitanCity, sigungu, eupmyeonri);
-			courts = courtService.getCourtListByLocation(reqData);
+			reqData = new CourtReqDTO(metropolitanCity, sigungu, eupmyeonri, pageNo);
+			courts = courtService.getCourtListByLocation(reqData);	//검색 조건에 맞는 배드민턴장 목록을 조회한다.
+			cnt = courtService.getCourtCntByLocation(reqData);	//검색한 배드민턴장 갯수를 검색한다.
 		} else {	//장소명을 검색해 배드민턴장 목록 검색하기
-			courts = courtService.getCourtListByName(name);
+			reqData = new CourtReqDTO(name, pageNo);
+			courts = courtService.getCourtListByName(reqData);	//검색 조건에 맞는 배드민턴장 목록을 조회한다.
+			cnt = courtService.getCourtCntByName(name);	//검색한 배드민턴장 갯수를 검색한다.
 		}
 		
 		if (courts.size()==0) {	
 			//검색 결과 해당 위치에 존재하는 배드민턴 장소가 없다면 204 Status Code 전달
 			return ResponseEntity.noContent().build();
 		} else {
-			//검색 결과 해당 위치에 존재하는 배드민턴 장소가 있다면 200 Status Code와 배드민턴장 목록 데이터 전달.
-			return ResponseEntity.ok(courts);
+			//전달할 데이터를 저장하는 클래스(전체 데이터 수, 현재 페이지 번호, 배드민턴장 목록)
+			CourtResDTO res = new CourtResDTO(cnt, pageNo, courts);
+			
+			return ResponseEntity.ok(res);
 		}
 	}
 	

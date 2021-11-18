@@ -44,8 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	//예약자 정보를 통해 예약 내역 조회하기
 	@Override
-	public List<ReservationCourtDTO> getReservationByBooker(String name, String phone) {
-		BookerDTO booker = new BookerDTO(name, phone);
+	public List<ReservationCourtDTO> getReservationByBooker(BookerDTO booker) {
 		
 		return reservationMapper.selectReservationListByBooker(booker);
 	}
@@ -77,9 +76,6 @@ public class ReservationServiceImpl implements ReservationService {
 			}
 		}
 		
-//		startTimes = startTimes.stream().distinct().collect(Collectors.toList());
-//		endTimes = endTimes.stream().distinct().collect(Collectors.toList());
-		
 		Collections.sort(startTimes);
 		Collections.sort(endTimes);
 		
@@ -91,6 +87,13 @@ public class ReservationServiceImpl implements ReservationService {
 	public Boolean updateReservation(ReservationDTO reservation) {
 		//수정이 정상적으로 완료되면 true, 완료되지 않으면 false
 		return reservationMapper.updateReservation(reservation)>0? true: false;
+	}
+
+	//예약자 이름과 전화번호를 가지고 검색된 전체 예약 데이터 수 조회하기
+	@Override
+	public int getReservationCnt(BookerDTO booker) {
+		
+		return reservationMapper.selectReservationCntByBooker(booker);
 	}
 
 }

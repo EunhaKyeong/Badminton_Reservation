@@ -21,7 +21,7 @@ public class CourtMapperTests {
 	//CourtMapper.java의 selectCourtListByLocation 메서드 테스트 코드
 	@Test
 	public void testOfSelectCourtListByLocation() {
-		CourtReqDTO courtReqDTO = new CourtReqDTO("인천광역시", "남동구", "구월동");
+		CourtReqDTO courtReqDTO = new CourtReqDTO("인천광역시", "남동구", "논현동", 2);
 		List<CourtDTO> courts = courtMapper.selectCourtListByLocation(courtReqDTO);
 		
 		if (courts.size()!=0) {
@@ -34,7 +34,8 @@ public class CourtMapperTests {
 	//CourtMapper.java의 selectCourtListByName 메서드 테스트 코드
 	@Test
 	void testOfSelectCourtListByName() {
-		List<CourtDTO> courts = courtMapper.selectCourtListByName("향촌");
+		CourtReqDTO courtReqDTO = new CourtReqDTO("향촌", 2);
+		List<CourtDTO> courts = courtMapper.selectCourtListByName(courtReqDTO);
 		
 		if (courts.size()!=0) {
 			for (CourtDTO court: courts) {

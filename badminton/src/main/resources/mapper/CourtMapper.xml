@@ -20,19 +20,36 @@
 		SELECT id, name, link
 		FROM court
 		WHERE do=#{metropolitanCity} AND sigungu=#{sigungu} AND eupmyeonri=#{eupmyeonri}
+		LIMIT #{startPage}, #{recordsPerPage}
 	</select>
 	
 	<!-- 클라이언트가 검색한 장소명이 포함되는 배드민턴장 데이터를 court 테이블에서 select 한다. -->
-	<select id="selectCourtListByName" parameterType="String" resultType="CourtDTO" resultMap="courtRM">
+	<select id="selectCourtListByName" parameterType="CourtReqDTO" resultType="CourtDTO" resultMap="courtRM">
 		SELECT id, name, link
 		FROM court
 		WHERE name LIKE CONCAT ('%', #{name}, '%')
+		LIMIT #{startPage}, #{recordsPerPage}
 	</select>
 	
+	<!-- courtId를 가지고 배드민턴장 이름, 오픈시간, 닫는시간을 조회한다. -->
 	<select id="selectCourtById" parameterType="Long" resultType="CourtDTO" resultMap="courtRM">
 		SELECT id, name, openTime, closeTime
 		FROM court
 		WHERE id=#{id}
+	</select>
+	
+	<!-- 클라이언트가 입력한 지역정보(광역시도, 시군구, 읍면동리)에 위치하는 배드민턴장의 전체 개수를 조회한다. -->
+	<select id="selectTotalCourtCntByLocation" parameterType="CourtReqDTO" resultType="int">
+		SELECT COUNT(*)
+		FROM court
+		WHERE do=#{metropolitanCity} AND sigungu=#{sigungu} AND eupmyeonri=#{eupmyeonri}
+	</select>
+	
+	<!-- 클라이언트가 검색한 장소명이 포함되는 배드민턴장의 전체 개수를 조회한다. -->
+	<select id="selectTotalCourtCntByName" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM court
+		WHERE name LIKE CONCAT ('%', #{name}, '%')
 	</select>
 	
 </mapper>
